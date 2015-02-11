@@ -4,7 +4,7 @@
         
 <style type="text/css">
     form li {
-        list-style:none;
+        list-style: none;
     }
         
 </style>
@@ -18,8 +18,8 @@
         echo form_open($base_url . 'user/register');
         
         $username = array(
-            'name'      =>      'reg_username',
-            'id'        =>      'reg_username',
+            'name'      =>      'username',
+            'id'        =>      'username',
             'value'     =>      ''
              
         );
@@ -74,10 +74,13 @@
         </div>
     </li>
     <li>
-    <label>Email</label>
+    <label>Confirm Password</label>
         <div>
             <?php echo form_password($password_conf); ?>
         </div>
+    </li>
+    <li>
+        <?php echo validation_errors(); ?>
     </li>
     <li>
         <div>

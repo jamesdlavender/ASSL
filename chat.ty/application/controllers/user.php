@@ -18,6 +18,7 @@ class User extends CI_Controller {
     {
         $this->load->library('form_validation');
         
+        $this->form_validation->set_rules('username', 'Username', 'trim|required|alpha_numeric|min_length[6]');
         
         if ($this->form_validation->run() == FALSE)
         {
