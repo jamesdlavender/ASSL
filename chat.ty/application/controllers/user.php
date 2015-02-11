@@ -1,4 +1,4 @@
-<?php
+<?php 
 class User extends CI_Controller {
     
     function User()
@@ -28,11 +28,9 @@ class User extends CI_Controller {
         else
         {
             // everything is good - process the form - write the data into the registration database
-            
-            
+                   
         }
-         
-        
+           
     }
     
 }
