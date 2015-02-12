@@ -1,6 +1,8 @@
 
 <?php include'template/menu.php'; ?>
 
+<img style="padding-left: 20px; padding-top: 10px; "src="../../images/logo_black.png" alt=""/>
+
 <h3 style="margin-left:140px;">  New user Register Here... 
 <?php  echo form_open(base_url().'user/registration'); ?>
 
