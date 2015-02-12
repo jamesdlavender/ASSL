@@ -1,6 +1,8 @@
 <?php include'template/menu.php'; ?>
 
+<img style="padding-left: 20px; padding-top: 10px; "src="../../images/logo_black.png" alt=""/>
 <h3>Login ...</h3>
+
 
 <?php  echo form_open('main/login_validation'); 
        echo validation_errors(); 
@@ -17,4 +19,6 @@
        echo form_close();
 
 ?>
-<a href='<?php echo base_url()."main/signup" ?>'>sign up</a>
+<div style="padding-left: 20px;">
+<a href='<?php echo base_url()."main/signup" ?>'>Sign Up!</a>
+</div>
