@@ -1,36 +1,96 @@
-<?php 
-class User extends CI_Controller {
-    
-    function User()
-    {
-        parent::__construct();
-        
-        $this->view_data['base_url'] = base_url();
-    }
-    
-    function index()
-    {
-        $this->register();
-        
-    }
-    
-    function register()
-    {
-        $this->load->library('form_validation');
-        
-        $this->form_validation->set_rules('username', 'Username', 'trim|required|alpha_numeric|min_length[6]');
-        
-        if ($this->form_validation->run() == FALSE)
-        {
-            // hasn't been run or there are validation errors
-            $this->load->view('view_register', $this->view_data);
-        }
-        else
-        {
-            // everything is good - process the form - write the data into the registration database
-                   
-        }
-           
-    }
-    
-}
+<?php
+class  user extends CI_Controller{
+	function __construct(){
+			parent::__construct();
+			$this->load->model('user_info');
+			$this->baseurl=dirname(dirname(base_url()));
+		
+	}
+	  function members(){
+		$data['content']='success';
+		 $this->load->view('v_content',$data);
+		}
+	   function index(){
+	
+		// $this->load->view('registration_form');
+		 	
+		$data['content']='v_content';
+		$this->load->view('registration_form',$data);
+	
+		}
+		
+		function registration(){
+		
+	  //  $this->load->view('registration_form');
+
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('firstname', 'First Name', 'trim|required');
+		$this->form_validation->set_rules('username', 'Username', 'is_unique[account.username]','trim|required');//accoutn column name and username in account database
+
+			$this->form_validation->set_rules('lastname', 'Last Name', 'trim|required');
+			$this->form_validation->set_rules('age', 'Age', 'trim|required');
+			$this->form_validation->set_rules('emailad', 'Email Address', 'trim|required|valid_email');
+			$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]|max_length[32]');
+			$this->form_validation->set_rules('cpassword', 'Password Confirmation', 'trim|required|matches[password]');
+			if($this->form_validation->run() == FALSE)
+			{
+				$this->index();
+			}
+			
+			else
+			{			
+				if($query = $this->user_info->ranjit_is_creating_user())
+				{
+					$this->members();	
+				}
+				else
+				{
+					//$this->load->view('registration');
+					$this->index();			
+				}
+			}
+		
+		
+
+		}
+	}
+	
+
+ ?>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
